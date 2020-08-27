@@ -1,0 +1,15 @@
+{% extends "users/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="questiondiv">
+    <form  method="POST">
+        {% csrf_token %}
+        <fieldset>
+            <legend>Add a new question</legend>
+            {% crispy form %}
+        </fieldset>
+        
+    </form>
+    <div>
+</div>
+{% endblock content %}

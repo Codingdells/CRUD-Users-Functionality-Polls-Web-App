@@ -1,0 +1,33 @@
+{% extends "users/base.html" %}
+{% block content %}
+<div class="displayform">
+<h3 class="text-left mb-3">{{ question.question_text }}</h3>
+{% if error_message %}
+<p class="alert alert-danger">
+    <strong>{{ error_message }}</strong>
+</p>
+{% endif %}
+<div class="containerq">
+<form action="{% url 'polls-vote' question.id %}" method="POST">
+    {% csrf_token %}
+    {% for choice in formset %}
+    <div class="ro">
+        <div class="">
+        <input type="radio" name="choice" class="form-check-input" id="{{ choice.id }}"
+            value="{{ choice.pk }}" />
+        <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label>
+        </div>
+    </div>
+    <div class="">
+        <div class="">
+        <label for="choice{{ forloop.counter }}">{{ choice.votes }}</label>
+        </div>
+    </div>
+    {% endfor %}
+    <input type="submit" value="Vote" class="btn btn-secondary mt-4" />
+    <a class="btn btn-secondary mt-4 " href="{% url 'list' %}">Back To Polls</a>
+    </div>
+</form>
+</div>
+</div>
+{% endblock content %}

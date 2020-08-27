@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <style>
+        body{
+            line-height: 1.3rem;
+            background-color:rgb(245, 245, 245);
+            text-align: center;
+            color: black;
+        }
+        .formcontrol{
+            margin: 0 auto;
+            text-align: left;
+            width: 60%;
+            background-color:rgb(255, 255, 255);
+            padding: 25px;
+            margin-top: 90px;
+            border-radius: 20px;
+        }
+        .formcontrol1{
+            margin: 0 auto;
+            text-align: left;
+            width: 60%;
+            background-color:rgb(201, 201, 201);
+            padding: 25px;
+            margin-top: 90px;
+            border-radius: 10px;
+        }
+
+        .card1{
+            margin: 0 auto;
+            text-align: left;
+            width: 60%;
+            background-color:rgb(221, 220, 220);
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 10px;
+        }
+
+        .questiondiv{
+            margin: 0 auto;
+            text-align: left;
+            width: 60%;
+            background-color:rgb(212, 211, 211);
+            padding: 25px;
+            margin-top: 50px;
+            border-radius: 20px;
+        }
+        .questiondiv button {
+            width: 100%;
+        }
+
+        .head{
+            margin-top: 15px;
+            padding-top:10px;
+            width: 56%;
+        }
+        .nav{
+            background-color: rgb(110, 110, 110);
+            justify-content:space-between;
+        }
+        .mainl{
+            font-size:23px;
+        }
+        .submit {
+            width: 100%;
+            cursor: pointer;
+            background-color: rgb(81, 134, 87);
+        }
+
+        .li{
+            background-color: #b6b6b6;
+            color: rgb(255, 255, 255);
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .namelink{
+            color: black;
+            font-size: 20px;
+        }
+
+        .displayform{
+            margin: 0 auto;
+            text-align: left;
+            width: 60%;
+            background-color:rgb(202, 202, 202);
+            padding: 30px;
+            margin-top: 90px;
+            border-radius: 15px;
+        }
+
+        .containerq {
+            font-size:20px;
+            display: flex;
+        }
+        .ro{
+            margin-left: 20px;
+            flex-direction: row;
+        }
+    </style>
+    <title>Polls Project</title>
+</head>
+<body>
+    <header class="site-header">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+            <div class="container">
+                <a class="navbar-brand mr-4 mainl" href="/">Questions <i class="fa fa-question-circle" aria-hidden="true"></i></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <div class="navbar-nav">
+                                {% if user.is_authenticated %}
+                                <a class="nav-item nav-link" href="{% url 'polls-create' %}">New Question</a>
+                                <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+                                {% else %}
+                                <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+                                {% endif %}
+                            </div>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

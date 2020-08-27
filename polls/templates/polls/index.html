@@ -1,0 +1,40 @@
+{% extends "users/base.html" %}
+{% block content %}
+<h2 class=" mb-2 head">Poll Questions</h2>
+{% for question in question %}
+<div class="card mb-3 card1">
+    <div class="card-body">
+        <small>This Question Was Asked By <a href="{% url 'users-detail' question.author.id %}">{{question.author}} <i class="fa fa-pencil-square" aria-hidden="true"></i></a></small>
+        <p><a class="namelink" href="{% url 'polls-detail' question.id%}">{{question.question_text}} </a></p>
+        <a class="btn btn-sm li" href="{% url 'polls-detail' question.id %}">Vote Now <i class="fa fa-exclamation" aria-hidden="true"></i></a>
+        {% if question.author == user %}
+        <a class="btn btn-sm li" href="{% url 'polls-update' question.pk %}">Update <i class="fa fa-pencil" aria-hidden="true"></i></a>
+        <a class="btn btn-sm li" href="{% url 'polls-delete' question.pk %}">Delete <i class="fa fa-trash" aria-hidden="true"></i></a>
+        {% endif %}
+        <a href=""></a>
+    </div>
+</div>
+{% endfor %}
+
+{% if is_paginated %}
+{% if page_obj.has_previous %}
+<a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+<a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+{% endif %}
+
+{% for num in page_obj.paginator.page_range %}
+{% if page_obj.number == num %}
+<a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+{% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+<a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+{% endif %}
+{% endfor %}
+
+
+{% if page_obj.has_next %}
+<a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
+<a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+{% endif %}
+
+{% endif %}
+{% endblock%}

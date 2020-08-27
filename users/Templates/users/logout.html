@@ -1,0 +1,11 @@
+{% extends "users/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="formcontrol1">
+    <p>You Have Been Logged Out Succesfully </p>
+    <div>
+        <small><a class="btn btn-sm li" href="{% url 'login' %}">Log Back In</a></small>
+        <small><a class="btn btn-sm li" href="{% url 'register' %}">Register</a></small>
+    </div>
+</div>
+{% endblock content %}

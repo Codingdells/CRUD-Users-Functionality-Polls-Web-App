@@ -1,0 +1,17 @@
+{% extends "users/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="questiondiv">
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset>
+            <legend>Delete</legend>
+            <h3>Are You Sure You Want To Proceed With Deleting <small>"{{question.question_text}}"</small></h3>
+            <button class="btn btn-outline-danger">Yes, I am Sure</button>
+            <a class="btn btn-outline-secondary" href="{% url 'list' %}">Cancel</a>
+        </fieldset>
+
+    </form>
+    <div>
+    </div>
+    {% endblock content %}
